@@ -66,43 +66,43 @@ rss:
     # Bing 新闻搜索（推荐 ⭐⭐⭐⭐⭐）
     - id: "bing-yinhe-hangtian"
       name: "Bing搜索-银河航天"
-      url: "https://rsshub.app/bing/news?q=银河航天"
+      url: "https://rsshub.rssforever.com/bing/news?q=银河航天"
       max_age_days: 30
     
     # Google 新闻搜索（推荐 ⭐⭐⭐⭐⭐）
     - id: "google-yinhe-hangtian"
       name: "Google新闻-银河航天"
-      url: "https://rsshub.app/google/news?q=银河航天"
+      url: "https://rsshub.rssforever.com/google/news?q=银河航天"
       max_age_days: 30
     
     # 百度新闻搜索
     - id: "baidu-yinhe-hangtian"
       name: "百度新闻-银河航天"
-      url: "https://rsshub.app/baidu/news?wd=银河航天"
+      url: "https://rsshub.rssforever.com/baidu/news?wd=银河航天"
       max_age_days: 30
     
     # 今日头条搜索
     - id: "toutiao-yinhe-hangtian"
       name: "今日头条-银河航天"
-      url: "https://rsshub.app/toutiao/search?keyword=银河航天"
+      url: "https://rsshub.rssforever.com/toutiao/search?keyword=银河航天"
       max_age_days: 30
     
     # 36氪搜索
     - id: "36kr-yinhe-hangtian"
       name: "36氪-银河航天"
-      url: "https://rsshub.app/36kr/search/article?keyword=银河航天"
+      url: "https://rsshub.rssforever.com/36kr/search/article?keyword=银河航天"
       max_age_days: 30
     
     # 微博搜索
     - id: "weibo-yinhe-hangtian"
       name: "微博-银河航天"
-      url: "https://rsshub.app/weibo/keyword/银河航天"
+      url: "https://rsshub.rssforever.com/weibo/keyword/银河航天"
       max_age_days: 30
     
     # 知乎搜索
     - id: "zhihu-yinhe-hangtian"
       name: "知乎-银河航天"
-      url: "https://rsshub.app/zhihu/search/article?keyword=银河航天"
+      url: "https://rsshub.rssforever.com/zhihu/search/article?keyword=银河航天"
       max_age_days: 30
     
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -112,55 +112,55 @@ rss:
     # 36氪航天频道
     - id: "36kr-space"
       name: "36氪-航天频道"
-      url: "https://rsshub.app/36kr/news/space"
+      url: "https://rsshub.rssforever.com/36kr/news/space"
       max_age_days: 30
     
     # 财新科技
     - id: "caixin-tech"
       name: "财新-科技"
-      url: "https://rsshub.app/caixin/tech"
+      url: "https://rsshub.rssforever.com/caixin/tech"
       max_age_days: 7
     
     # 观察者网科技
     - id: "guancha-tech"
       name: "观察者网-科技"
-      url: "https://rsshub.app/guancha/technology"
+      url: "https://rsshub.rssforever.com/guancha/technology"
       max_age_days: 7
     
     # 新华网科技
     - id: "xinhua-science"
       name: "新华网-科学探索"
-      url: "https://rsshub.app/xinhuanet/science"
+      url: "https://rsshub.rssforever.com/xinhuanet/science"
       max_age_days: 7
     
     # 人民网科技
     - id: "people-tech"
       name: "人民网-科技"
-      url: "https://rsshub.app/people/tech"
+      url: "https://rsshub.rssforever.com/people/tech"
       max_age_days: 7
     
     # 央视新闻科技
     - id: "cctv-tech"
       name: "央视新闻-科技"
-      url: "https://rsshub.app/cctv/keji"
+      url: "https://rsshub.rssforever.com/cctv/keji"
       max_age_days: 7
     
     # 腾讯科技
     - id: "qq-tech"
       name: "腾讯科技"
-      url: "https://rsshub.app/qq/tech"
+      url: "https://rsshub.rssforever.com/qq/tech"
       max_age_days: 3
     
     # 网易科技
     - id: "163-tech"
       name: "网易科技"
-      url: "https://rsshub.app/163/tech"
+      url: "https://rsshub.rssforever.com/163/tech"
       max_age_days: 3
     
     # 新浪科技
     - id: "sina-tech"
       name: "新浪科技"
-      url: "https://rsshub.app/sina/tech"
+      url: "https://rsshub.rssforever.com/sina/tech"
       max_age_days: 3
     
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -176,19 +176,19 @@ rss:
     # TechCrunch
     - id: "techcrunch"
       name: "TechCrunch"
-      url: "https://rsshub.app/techcrunch"
+      url: "https://rsshub.rssforever.com/techcrunch"
       max_age_days: 3
     
     # The Verge
     - id: "theverge"
       name: "The Verge"
-      url: "https://rsshub.app/theverge"
+      url: "https://rsshub.rssforever.com/theverge"
       max_age_days: 3
     
     # MIT Technology Review
     - id: "mit-tech-review"
       name: "MIT科技评论"
-      url: "https://rsshub.app/technologyreview"
+      url: "https://rsshub.rssforever.com/technologyreview"
       max_age_days: 7
     
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
