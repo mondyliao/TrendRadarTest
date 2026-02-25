@@ -238,7 +238,7 @@ display:
 # 6. 推送通知
 # ===============================================================
 notification:
-  enabled: false
+  enabled: true
   channels:
     feishu:
       webhook_url: ""
