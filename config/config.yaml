@@ -250,7 +250,7 @@ rss:
 # 4. 报告模式
 # ===============================================================
 report:
-  mode: "full"                 # 改为 full
+  mode: "incremental"                 # 改为 增量了
   display_mode: "keyword"
   sort_by_position_first: false
   rank_threshold: 5
