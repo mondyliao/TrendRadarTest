@@ -91,22 +91,26 @@ rss:
       url: "https://news.google.com/rss/search?q=卫星互联网&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
       max_age_days: 7
     
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    # 使用你的 Vercel RSSHub 实例
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
     # 微博 - 银河航天
     - id: "weibo-yinhe"
       name: "微博-银河航天"
-      url: "https://rsshub.app/weibo/keyword/银河航天"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/银河航天"
       max_age_days: 7
     
     # 微博 - 商业航天
     - id: "weibo-space"
       name: "微博-商业航天"
-      url: "https://rsshub.app/weibo/keyword/商业航天"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/商业航天"
       max_age_days: 7
     
     # 微博热搜榜
     - id: "weibo-hot"
       name: "微博热搜榜"
-      url: "https://rsshub.app/weibo/search/hot"
+      url: "https://rsshub123test.vercel.app/weibo/search/hot"
       max_age_days: 1
     
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -116,109 +120,109 @@ rss:
     # 财联社 - 头条
     - id: "cls-headline"
       name: "财联社-头条"
-      url: "https://rsshub.app/cls/depth/1000"
+      url: "https://rsshub123test.vercel.app/cls/depth/1000"
       max_age_days: 3
     
     # 财联社 - 科创板
     - id: "cls-kcb"
       name: "财联社-科创板"
-      url: "https://rsshub.app/cls/depth/1111"
+      url: "https://rsshub123test.vercel.app/cls/depth/1111"
       max_age_days: 3
     
     # 财联社 - 电报
     - id: "cls-telegraph"
       name: "财联社-电报"
-      url: "https://rsshub.app/cls/telegraph"
+      url: "https://rsshub123test.vercel.app/cls/telegraph"
       max_age_days: 1
     
     # 同花顺 - 7×24小时要闻
     - id: "10jqka-news"
       name: "同花顺-7×24小时要闻"
-      url: "https://rsshub.app/10jqka/realtimenews"
+      url: "https://rsshub123test.vercel.app/10jqka/realtimenews"
       max_age_days: 1
     
     # 雪球 - 热帖
     - id: "xueqiu-hot"
       name: "雪球-热帖"
-      url: "https://rsshub.app/xueqiu/hots"
+      url: "https://rsshub123test.vercel.app/xueqiu/hots"
       max_age_days: 1
     
     # 雪球 - 今日话题
     - id: "xueqiu-today"
       name: "雪球-今日话题"
-      url: "https://rsshub.app/xueqiu/today"
+      url: "https://rsshub123test.vercel.app/xueqiu/today"
       max_age_days: 1
     
     # 21财经 - 热点
     - id: "21caijing-hot"
       name: "21财经-热点"
-      url: "https://rsshub.app/21caijing/channel/热点"
+      url: "https://rsshub123test.vercel.app/21caijing/channel/热点"
       max_age_days: 3
     
     # 21财经 - 投资通/盘前情报
     - id: "21caijing-investment"
       name: "21财经-盘前情报"
-      url: "https://rsshub.app/21caijing/channel/投资通/盘前情报"
+      url: "https://rsshub123test.vercel.app/21caijing/channel/投资通/盘前情报"
       max_age_days: 1
     
     # Bloomberg - 科技
     - id: "bloomberg-tech"
       name: "Bloomberg-科技"
-      url: "https://rsshub.app/bloomberg/technology"
+      url: "https://rsshub123test.vercel.app/bloomberg/technology"
       max_age_days: 3
     
     # Bloomberg - 商业
     - id: "bloomberg-business"
       name: "Bloomberg-商业"
-      url: "https://rsshub.app/bloomberg/bbiz"
+      url: "https://rsshub123test.vercel.app/bloomberg/bbiz"
       max_age_days: 3
     
     # 纽约时报中文网
     - id: "nytimes-cn"
       name: "纽约时报中文网"
-      url: "https://rsshub.app/nytimes/dual"
+      url: "https://rsshub123test.vercel.app/nytimes/dual"
       max_age_days: 7
     
     # 第一财经 - 科技
     - id: "yicai-tech"
       name: "第一财经-科技"
-      url: "https://rsshub.app/yicai/news/kechuang"
+      url: "https://rsshub123test.vercel.app/yicai/news/kechuang"
       max_age_days: 3
     
     # 证券时报 - 要闻
     - id: "stcn-news"
       name: "证券时报-要闻"
-      url: "https://rsshub.app/stcn/article/rank/yw"
+      url: "https://rsshub123test.vercel.app/stcn/article/rank/yw"
       max_age_days: 3
     
     # 证券时报 - 科创板
     - id: "stcn-kcb"
       name: "证券时报-科创板"
-      url: "https://rsshub.app/stcn/article/rank/kcb"
+      url: "https://rsshub123test.vercel.app/stcn/article/rank/kcb"
       max_age_days: 3
     
     # 科技日报
     - id: "stdaily"
       name: "科技日报"
-      url: "https://rsshub.app/stdaily/digitalpaper"
+      url: "https://rsshub123test.vercel.app/stdaily/digitalpaper"
       max_age_days: 3
     
     # 环球网 - 国内新闻
     - id: "huanqiu-china"
       name: "环球网-国内新闻"
-      url: "https://rsshub.app/huanqiu/news/china"
+      url: "https://rsshub123test.vercel.app/huanqiu/news/china"
       max_age_days: 3
     
     # 央视新闻 - 科技
     - id: "cctv-tech"
       name: "央视新闻-科技"
-      url: "https://rsshub.app/cctv/tech"
+      url: "https://rsshub123test.vercel.app/cctv/tech"
       max_age_days: 3
     
     # 知乎热榜
     - id: "zhihu-hot"
       name: "知乎热榜"
-      url: "https://rsshub.app/zhihu/hotlist"
+      url: "https://rsshub123test.vercel.app/zhihu/hotlist"
       max_age_days: 1
     
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
