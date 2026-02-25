@@ -13,11 +13,10 @@ app:
   show_version_update: true
 
 # ===============================================================
-# 1.5 调度系统（已禁用，保持 full 报告模式）
+# 1.5 调度系统（已禁用）
 # ===============================================================
 schedule:
-  enabled: false  # ← 改为 false，避免被强制改成 current 模式
-
+  enabled: false
 
 # ===============================================================
 # 2. 数据源 - 热榜平台
@@ -49,18 +48,11 @@ platforms:
       name: "知乎"
 
 # ===============================================================
-# 3. 数据源 - RSS 订阅（全面覆盖银河航天相关新闻）
+# 3. 数据源 - RSS 订阅
 # ===============================================================
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# RSS 抓取配置
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 rss:
   feeds:
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    # 📰 新闻资讯
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    
-    # ✅ 保持 Vercel 实例（已验证稳定）
+    # 财联社
     - id: "cls-headline"
       name: "财联社-头条"
       url: "https://rsshub123test.vercel.app/cls/depth/1000"
@@ -76,11 +68,7 @@ rss:
       url: "https://rsshub123test.vercel.app/cls/telegraph"
       max_age_days: 30
       
-    - id: "10jqka-news"
-      name: "同花顺-7×24小时要闻"
-      url: "https://rsshub123test.vercel.app/10jqka/realtimenews"
-      max_age_days: 30
-      
+    # 证券时报
     - id: "stcn-news"
       name: "证券时报-要闻"
       url: "https://rsshub123test.vercel.app/stcn/article/rank/yw"
@@ -91,94 +79,7 @@ rss:
       url: "https://rsshub123test.vercel.app/stcn/kcb"
       max_age_days: 30
       
-    - id: "kejiribar"
-      name: "科技日报"
-      url: "https://rsshub123test.vercel.app/kjrb"
-      max_age_days: 30
-      
-    - id: "huanqiu-china"
-      name: "环球网-国内新闻"
-      url: "https://rsshub123test.vercel.app/huanqiu/china"
-      max_age_days: 30
-      
-    - id: "cctv-tech"
-      name: "央视新闻-科技"
-      url: "https://rsshub123test.vercel.app/cctv/news/tech"
-      max_age_days: 30
-      
-    - id: "bloomberg-tech"
-      name: "Bloomberg-科技"
-      url: "https://rsshub123test.vercel.app/bloomberg/technology"
-      max_age_days: 30
-      
-    - id: "bloomberg-business"
-      name: "Bloomberg-商业"
-      url: "https://rsshub123test.vercel.app/bloomberg/business"
-      max_age_days: 30
-      
-    - id: "caijing21-hot"
-      name: "21财经-热点"
-      url: "https://rsshub123test.vercel.app/21caijing/channel/readnumber"
-      max_age_days: 30
-    
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    # 🔄 改用官方实例（Vercel 实例不稳定）
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    
-    - id: "weibo-yinhe"
-      name: "微博-银河航天"
-      url: "https://rsshub.app/weibo/keyword/银河航天"
-      max_age_days: 30
-      
-    - id: "weibo-space"
-      name: "微博-商业航天"
-      url: "https://rsshub.app/weibo/keyword/商业航天"
-      max_age_days: 30
-      
-    - id: "weibo-hot"
-      name: "微博热搜榜"
-      url: "https://rsshub.app/weibo/search/hot"
-      max_age_days: 30
-      
-    - id: "xueqiu-hot"
-      name: "雪球-热帖"
-      url: "https://rsshub.app/xueqiu/hots"
-      max_age_days: 30
-      
-    - id: "xueqiu-today"
-      name: "雪球-今日话题"
-      url: "https://rsshub.app/xueqiu/today"
-      max_age_days: 30
-      
-    - id: "zhihu-hot"
-      name: "知乎热榜"
-      url: "https://rsshub.app/zhihu/hotlist"
-      max_age_days: 30
-      
-    - id: "nytimes-cn"
-      name: "纽约时报中文网"
-      url: "https://rsshub.app/nytimes/dual"
-      max_age_days: 30
-      
-    - id: "yicai-tech"
-      name: "第一财经-科技"
-      url: "https://rsshub.app/yicai/news/tech"
-      max_age_days: 30
-      
-    - id: "caijing21-premarket"
-      name: "21财经-盘前情报"
-      url: "https://rsshub.app/21caijing/channel/securities/premarket"
-      max_age_days: 30
-      
-    - id: "geekpark"
-      name: "极客公园"
-      url: "https://rsshub.app/geekpark/breakingnews"
-      max_age_days: 30
-    
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    # 🌐 Google News（保持不变）
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    
+    # Google News
     - id: "google-news-yinhe"
       name: "Google新闻-银河航天"
       url: "https://news.google.com/rss/search?q=银河航天&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
@@ -194,49 +95,26 @@ rss:
       url: "https://news.google.com/rss/search?q=卫星互联网&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
       max_age_days: 30
     
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    # 💻 科技媒体（原生 RSS，保持不变）
-    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    
+    # 科技媒体
     - id: "36kr-feed"
       name: "36氪"
       url: "https://36kr.com/feed"
-      max_age_days: 30
-      
-    - id: "huxiu-brief"
-      name: "虎嗅-简讯"
-      url: "https://www.huxiu.com/rss/0.xml"
       max_age_days: 30
       
     - id: "ithome"
       name: "IT之家"
       url: "https://www.ithome.com/rss/"
       max_age_days: 30
-      
-    - id: "hackernews"
-      name: "Hacker News"
-      url: "https://news.ycombinator.com/rss"
-      max_age_days: 30
-      
-    - id: "techcrunch"
-      name: "TechCrunch"
-      url: "https://techcrunch.com/feed/"
-      max_age_days: 30
-      
-    - id: "theverge"
-      name: "The Verge"
-      url: "https://www.theverge.com/rss/index.xml"
-      max_age_days: 30
 
 # ===============================================================
-# 4. 报告模式（全量模式，包含所有匹配新闻）
+# 4. 报告模式
 # ===============================================================
 report:
   mode: "full"
   display_mode: "keyword"
   sort_by_position_first: false
   rank_threshold: 5
-  max_news_per_keyword: 0  # 0 = 不限制数量
+  max_news_per_keyword: 0
 
 # ===============================================================
 # 5. 推送内容控制
@@ -296,7 +174,7 @@ notification:
       payload_template: ""
 
 # ===============================================================
-# 7. 存储配置（保留30天历史数据）
+# 7. 存储配置
 # ===============================================================
 storage:
   backend: "auto"
@@ -306,7 +184,7 @@ storage:
     html: true
   local:
     data_dir: "output"
-    retention_days: 30  # ← 改为 30 天
+    retention_days: 30
   remote:
     retention_days: 0
     endpoint_url: ""
@@ -316,7 +194,7 @@ storage:
     region: ""
   pull:
     enabled: false
-    days: 30  # ← 改为 30 天
+    days: 30
 
 # ===============================================================
 # 8. AI 模型配置
