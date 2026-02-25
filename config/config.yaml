@@ -13,10 +13,10 @@ app:
   show_version_update: true
 
 # ===============================================================
-# 1.5 调度系统
+# 1.5 调度系统（已禁用，保持 full 报告模式）
 # ===============================================================
 schedule:
-  enabled: true
+  enabled: false  # ← 改为 false，避免被强制改成 current 模式
   preset: "morning_evening"
 
 # ===============================================================
@@ -127,52 +127,52 @@ rss:
     
     - id: "weibo-yinhe"
       name: "微博-银河航天"
-      url: "https://rsshub.app/weibo/keyword/银河航天"  # ← 改用官方
+      url: "https://rsshub.app/weibo/keyword/银河航天"
       max_age_days: 30
       
     - id: "weibo-space"
       name: "微博-商业航天"
-      url: "https://rsshub.app/weibo/keyword/商业航天"  # ← 改用官方
+      url: "https://rsshub.app/weibo/keyword/商业航天"
       max_age_days: 30
       
     - id: "weibo-hot"
       name: "微博热搜榜"
-      url: "https://rsshub.app/weibo/search/hot"  # ← 改用官方
+      url: "https://rsshub.app/weibo/search/hot"
       max_age_days: 30
       
     - id: "xueqiu-hot"
       name: "雪球-热帖"
-      url: "https://rsshub.app/xueqiu/hots"  # ← 改用官方
+      url: "https://rsshub.app/xueqiu/hots"
       max_age_days: 30
       
     - id: "xueqiu-today"
       name: "雪球-今日话题"
-      url: "https://rsshub.app/xueqiu/today"  # ← 改用官方
+      url: "https://rsshub.app/xueqiu/today"
       max_age_days: 30
       
     - id: "zhihu-hot"
       name: "知乎热榜"
-      url: "https://rsshub.app/zhihu/hotlist"  # ← 改用官方
+      url: "https://rsshub.app/zhihu/hotlist"
       max_age_days: 30
       
     - id: "nytimes-cn"
       name: "纽约时报中文网"
-      url: "https://rsshub.app/nytimes/dual"  # ← 改用官方
+      url: "https://rsshub.app/nytimes/dual"
       max_age_days: 30
       
     - id: "yicai-tech"
       name: "第一财经-科技"
-      url: "https://rsshub.app/yicai/news/tech"  # ← 改用官方
+      url: "https://rsshub.app/yicai/news/tech"
       max_age_days: 30
       
     - id: "caijing21-premarket"
       name: "21财经-盘前情报"
-      url: "https://rsshub.app/21caijing/channel/securities/premarket"  # ← 改用官方
+      url: "https://rsshub.app/21caijing/channel/securities/premarket"
       max_age_days: 30
       
     - id: "geekpark"
       name: "极客公园"
-      url: "https://rsshub.app/geekpark/breakingnews"  # ← 改用官方
+      url: "https://rsshub.app/geekpark/breakingnews"
       max_age_days: 30
     
     # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -229,14 +229,14 @@ rss:
       max_age_days: 30
 
 # ===============================================================
-# 4. 报告模式
+# 4. 报告模式（全量模式，包含所有匹配新闻）
 # ===============================================================
 report:
-  mode: "full"                 # 改为 full了
+  mode: "full"
   display_mode: "keyword"
   sort_by_position_first: false
   rank_threshold: 5
-  max_news_per_keyword: 0
+  max_news_per_keyword: 0  # 0 = 不限制数量
 
 # ===============================================================
 # 5. 推送内容控制
@@ -296,7 +296,7 @@ notification:
       payload_template: ""
 
 # ===============================================================
-# 7. 存储配置
+# 7. 存储配置（保留30天历史数据）
 # ===============================================================
 storage:
   backend: "auto"
@@ -306,7 +306,7 @@ storage:
     html: true
   local:
     data_dir: "output"
-    retention_days: 0
+    retention_days: 30  # ← 改为 30 天
   remote:
     retention_days: 0
     endpoint_url: ""
@@ -316,7 +316,7 @@ storage:
     region: ""
   pull:
     enabled: false
-    days: 7
+    days: 30  # ← 改为 30 天
 
 # ===============================================================
 # 8. AI 模型配置
