@@ -17,3 +17,5 @@
 
 [银河航天]
 银河航天
+GalaxySpace
+Galaxy Space
