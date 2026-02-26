@@ -44,7 +44,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write  # 🔧 改为 write，以便提交标记文件
   actions: write
 
 jobs:
@@ -93,23 +93,17 @@ jobs:
             fi
           fi
 
-
-      # --------------------------------------------------------------------------------
-      # 🚦 TRAFFIC CONTROL / 流量控制
-      # --------------------------------------------------------------------------------
-      # EN: Generates a random delay between 1 and 300 seconds (5 minutes).
-      #     Critical for load balancing.
-      #
-      # CN: 生成 1 到 300 秒（5分钟）之间的随机延迟。
-      #     这对负载均衡至关重要。
-      # - name: Random Delay (Traffic Control)
-      #   if: success()
-      #   run: |
-      #     echo "🎲 Traffic Control: Generating random delay..."
-      #     DELAY=$(( ( RANDOM % 300 )  + 1 ))
-      #     echo "⏸️  Sleeping for ${DELAY} seconds to spread the load..."
-      #     sleep ${DELAY}s
-      #     echo "▶️  Delay finished. Starting crawler..."
+      # 🔧 新增：检查是否首次运行
+      - name: Check first run
+        id: first_run_check
+        run: |
+          if [ ! -f ".first_run_completed" ]; then
+            echo "is_first_run=true" >> $GITHUB_OUTPUT
+            echo "🔍 检测到首次运行，将获取历史数据"
+          else
+            echo "is_first_run=false" >> $GITHUB_OUTPUT
+            echo "✅ 非首次运行，使用正常配置"
+          fi
 
       - name: Set up Python
         if: success()
@@ -132,6 +126,22 @@ jobs:
             exit 1
           fi
 
+      # 🔧 新增：首次运行时修改配置
+      - name: Modify config for first run
+        if: success() && steps.first_run_check.outputs.is_first_run == 'true'
+        run: |
+          echo "📝 临时修改配置以获取历史数据..."
+          
+          # 检查脚本是否存在
+          if [ -f "scripts/check_first_run.py" ]; then
+            python scripts/check_first_run.py check
+          else
+            echo "⚠️ 脚本不存在，使用 sed 直接修改配置"
+            cp config/config.yaml config/config.yaml.backup
+            sed -i 's/max_age_days: 7/max_age_days: 30/' config/config.yaml
+            echo "✅ 已将 max_age_days 改为 30 天"
+          fi
+
       - name: Run crawler
         if: success()
         env:
@@ -151,15 +161,12 @@ jobs:
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
           BARK_URL: ${{ secrets.BARK_URL }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          # 通用Webhook配置
           GENERIC_WEBHOOK_URL: ${{ secrets.GENERIC_WEBHOOK_URL }}
           GENERIC_WEBHOOK_TEMPLATE: ${{ secrets.GENERIC_WEBHOOK_TEMPLATE }}
-          # AI 配置（ai_analysis 和 ai_translation 共享模型配置）
           AI_ANALYSIS_ENABLED: ${{ secrets.AI_ANALYSIS_ENABLED }}
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
           AI_API_BASE: ${{ secrets.AI_API_BASE }}
-          # 远程存储配置
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           S3_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
           S3_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
@@ -167,3 +174,37 @@ jobs:
           S3_REGION: ${{ secrets.S3_REGION }}
           GITHUB_ACTIONS: true
         run: python -m trendradar
+
+      # 🔧 新增：首次运行完成后的处理
+      - name: Complete first run
+        if: success() && steps.first_run_check.outputs.is_first_run == 'true'
+        run: |
+          echo "✅ 首次运行完成，恢复配置并标记..."
+          
+          # 恢复配置
+          if [ -f "scripts/check_first_run.py" ]; then
+            python scripts/check_first_run.py restore
+            python scripts/check_first_run.py mark
+          else
+            # 手动恢复
+            if [ -f "config/config.yaml.backup" ]; then
+              mv config/config.yaml.backup config/config.yaml
+            fi
+            # 创建标记文件
+            echo "# TrendRadar 首次运行标记" > .first_run_completed
+            echo "完成时间: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> .first_run_completed
+            echo "说明: 删除此文件将触发重新获取历史数据" >> .first_run_completed
+          fi
+          
+          echo "✅ 配置已恢复，下次将使用正常配置"
+
+      # 🔧 新增：提交标记文件
+      - name: Commit first run marker
+        if: success() && steps.first_run_check.outputs.is_first_run == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          git add .first_run_completed
+          git diff --staged --quiet || git commit -m "chore: mark first run completed [skip ci]"
+          git push || echo "Nothing to push"
