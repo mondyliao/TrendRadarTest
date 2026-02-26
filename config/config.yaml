@@ -89,49 +89,122 @@ platforms:
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
 # ===============================================================
 rss:
-  enabled: true                       # 是否启用 RSS 抓取
-
-  # 文章新鲜度过滤配置（全局默认值）
-  # 过滤掉发布时间超过指定天数的旧文章，避免同一篇文章重复出现在推送中
-  #
-  # 过滤逻辑：
-  #   - 文章发布时间距当前时间（app.timezone 时区）超过 N 天则不推送
-  #   - 无发布时间的文章会被保留（不过滤）
-  #
-  # ⚠️ 过滤时机：在推送阶段过滤
-  #    - 所有文章都会存入数据库（MCP Server 的 AI 查询仍可访问）
-  #    - 只有新鲜的文章会被推送到通知渠道
+  enabled: true
+  
   freshness_filter:
-    enabled: true                     # 是否启用新鲜度过滤（默认启用）
+    enabled: true
+    max_age_days: 7
 
-    max_age_days: 3                   # 最大文章年龄（天）
-                                      # - 正整数：只推送 N 天内的文章
-                                      # - 0：禁用过滤，推送所有文章
-
-  # 单个 feed 可配置 max_age_days 覆盖全局设置：
-  # - 不配置：使用全局 freshness_filter.max_age_days（默认 3 天）
-  # - 正整数：覆盖全局设置，只推送此天数内的文章
-  # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
+    # ============ 科技新闻 ============
+    - id: "36kr"
+      name: "36氪快讯"
+      url: "https://rsshub.app/36kr/newsflashes"
+      
+    - id: "ifanr"
+      name: "爱范儿"
+      url: "https://www.ifanr.com/feed"
+      
+    - id: "geekpark"
+      name: "极客公园快讯"
+      url: "https://rsshub.app/geekpark/breakingnews"
+    
+    # ============ 财经新闻 ============
+    - id: "cls"
+      name: "财联社电报"
+      url: "https://rsshub.app/cls/telegraph"
+      
+    - id: "wallstreet"
+      name: "华尔街见闻"
+      url: "https://rsshub.app/wallstreetcn/news/global"
+      
+    - id: "xueqiu-hot"
+      name: "雪球热帖"
+      url: "https://rsshub.app/xueqiu/hots"
+    
+    - id: "10jqka"
+      name: "同花顺7×24小时"
+      url: "https://rsshub.app/10jqka/realtimenews"
+    
+    - id: "sina-finance"
+      name: "新浪财经国内"
+      url: "https://rsshub.app/sina/finance/china"
+    
+    # ============ 航天/科学相关 ============
+    - id: "space-china"
+      name: "中国航天新闻"
+      url: "https://rsshub.app/cnspacelab"
+      max_age_days: 30
+      
+    - id: "c114"
+      name: "C114通信网"
+      url: "https://rsshub.app/c114/roll"
+    
+    # ============ 社交媒体关键词搜索 ============
+    
+    # Twitter 关键词搜索（需要配置 TWITTER_AUTH_TOKEN）
+    - id: "twitter-galaxy-space"
+      name: "Twitter-银河航天"
+      url: "https://rsshub.app/twitter/keyword/银河航天"
+      max_age_days: 3
+      
+    - id: "twitter-galaxy-space-en"
+      name: "Twitter-GalaxySpace"
+      url: "https://rsshub.app/twitter/keyword/GalaxySpace"
+      max_age_days: 3
+    
+    - id: "twitter-satellite"
+      name: "Twitter-卫星互联网"
+      url: "https://rsshub.app/twitter/keyword/卫星互联网"
+      max_age_days: 3
+    
+    - id: "twitter-satellite-en"
+      name: "Twitter-satellite internet"
+      url: "https://rsshub.app/twitter/keyword/satellite internet"
+      max_age_days: 3
+    
+    # 微博关键词搜索（需要配置 WEIBO_COOKIES）
+    - id: "weibo-galaxy-space"
+      name: "微博-银河航天"
+      url: "https://rsshub.app/weibo/keyword/银河航天"
+      max_age_days: 3
+      
+    - id: "weibo-satellite"
+      name: "微博-卫星互联网"
+      url: "https://rsshub.app/weibo/keyword/卫星互联网"
+      max_age_days: 3
+    
+    - id: "weibo-leo-satellite"
+      name: "微博-低轨卫星"
+      url: "https://rsshub.app/weibo/keyword/低轨卫星"
+      max_age_days: 3
+    
+    # ============ 新闻媒体 ============
+    - id: "cctv-tech"
+      name: "央视新闻-科技"
+      url: "https://rsshub.app/cctv/tech"
+    
+    - id: "china-news"
+      name: "中华网-时事新闻"
+      url: "https://rsshub.app/china/news"
+    
+    - id: "nytimes-cn"
+      name: "纽约时报中文网"
+      url: "https://rsshub.app/nytimes/dual"
+      max_age_days: 3
+    
+    - id: "bloomberg"
+      name: "Bloomberg科技"
+      url: "https://rsshub.app/bloomberg/technology"
+    
+    - id: "reuters-tech"
+      name: "路透社科技"
+      url: "https://rsshub.app/reuters/technology"
+    
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
-
-    - id: "ruanyifeng"
-      name: "阮一峰的网络日志"
-      url: "http://www.ruanyifeng.com/blog/atom.xml"
-    
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-      enabled: true
-
-    # 自定义源示例
-    # - id: "custom-feed"
-    #   name: "自定义源"
-    #   url: "https://example.com/feed.xml"
-    #   enabled: false
-    #   max_age_days: 0               # 示例：禁用过滤，推送所有文章
+      max_age_days: 1
 
 
 # ===============================================================
