@@ -92,23 +92,478 @@ platforms:
 # ===============================================================
 # 3. 数据源 - RSS 订阅
 # ===============================================================
+# ===============================================================
+# 3. 数据源 - RSS 订阅（扩展版）
+# ===============================================================
 rss:
   enabled: true
   
   freshness_filter:
     enabled: true
-    max_age_days: 180  # 🔥 改为180天（近半年），全局默认值
+    max_age_days: 180  # 全局默认半年
 
   feeds:
     # ============================================================
-    # 🇨🇳 中国大陆核心媒体（央媒+科技+财经）
+    # 🎯 银河航天专属搜索（多维度覆盖）
+    # ============================================================
+    
+    # --- RSSHub 搜索（保留所有变体，测试哪个效果好）---
+    - id: "rsshub-galaxyspace-jian"
+      name: "RSSHub搜索-银河航天（简体）"
+      url: "https://rsshub123test.vercel.app/search/银河航天"
+      fallback_url: "https://rsshub.app/search/银河航天"
+      max_age_days: 30
+
+    - id: "rsshub-galaxyspace-fan"
+      name: "RSSHub搜索-銀河航天（繁体）"
+      url: "https://rsshub123test.vercel.app/search/銀河航天"
+      fallback_url: "https://rsshub.app/search/銀河航天"
+      max_age_days: 30
+
+    - id: "rsshub-galaxyspace-en"
+      name: "RSSHub搜索-GalaxySpace"
+      url: "https://rsshub123test.vercel.app/search/GalaxySpace"
+      fallback_url: "https://rsshub.app/search/GalaxySpace"
+      max_age_days: 30
+
+    - id: "rsshub-galaxyspace-upper"
+      name: "RSSHub搜索-GALAXYSPACE"
+      url: "https://rsshub123test.vercel.app/search/GALAXYSPACE"
+      fallback_url: "https://rsshub.app/search/GALAXYSPACE"
+      max_age_days: 30
+
+    # --- Google News（多语言测试）---
+    - id: "google-search-galaxyspace-cn"
+      name: "Google News-银河航天（中国）"
+      url: "https://news.google.com/rss/search?q=银河航天&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+      max_age_days: 30
+
+    - id: "google-search-galaxyspace-tw"
+      name: "Google News-銀河航天（台湾）"
+      url: "https://news.google.com/rss/search?q=銀河航天&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+      max_age_days: 30
+
+    - id: "google-search-galaxyspace-hk"
+      name: "Google News-银河航天（香港）"
+      url: "https://news.google.com/rss/search?q=银河航天&hl=zh-HK&gl=HK&ceid=HK:zh-Hant"
+      max_age_days: 30
+
+    - id: "google-search-galaxyspace-en"
+      name: "Google News-GalaxySpace（英文）"
+      url: "https://news.google.com/rss/search?q=GalaxySpace+OR+Galaxy+Space&hl=en-US&gl=US&ceid=US:en"
+      max_age_days: 30
+
+    - id: "google-search-galaxyspace-satellite"
+      name: "Google News-银河航天+卫星"
+      url: "https://news.google.com/rss/search?q=银河航天+卫星互联网&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+      max_age_days: 30
+
+    # --- Bing News（多语言测试）---
+    - id: "bing-search-galaxyspace-cn"
+      name: "Bing News-银河航天（简体）"
+      url: "https://rsshub123test.vercel.app/bing/news/银河航天"
+      fallback_url: "https://rsshub.app/bing/news/银河航天"
+      max_age_days: 30
+
+    - id: "bing-search-galaxyspace-en"
+      name: "Bing News-GalaxySpace"
+      url: "https://rsshub123test.vercel.app/bing/news/GalaxySpace"
+      fallback_url: "https://rsshub.app/bing/news/GalaxySpace"
+      max_age_days: 30
+
+    - id: "bing-search-satellite-cn"
+      name: "Bing News-卫星互联网"
+      url: "https://rsshub123test.vercel.app/bing/news/卫星互联网"
+      fallback_url: "https://rsshub.app/bing/news/卫星互联网"
+      max_age_days: 30
+
+    # --- Baidu（尝试原生+RSSHub）---
+    - id: "baidu-search-galaxyspace-rsshub"
+      name: "Baidu搜索-银河航天（RSSHub）"
+      url: "https://rsshub123test.vercel.app/baidu/news/银河航天"
+      fallback_url: "https://rsshub.app/baidu/news/银河航天"
+      max_age_days: 30
+
+    - id: "baidu-search-satellite-rsshub"
+      name: "Baidu搜索-卫星互联网（RSSHub）"
+      url: "https://rsshub123test.vercel.app/baidu/news/卫星互联网"
+      fallback_url: "https://rsshub.app/baidu/news/卫星互联网"
+      max_age_days: 30
+
+    # --- DuckDuckGo News（试试小众搜索引擎）---
+    - id: "duckduckgo-galaxyspace"
+      name: "DuckDuckGo-银河航天"
+      url: "https://rsshub123test.vercel.app/duckduckgo/银河航天"
+      fallback_url: "https://rsshub.app/duckduckgo/银河航天"
+      max_age_days: 30
+
+    # --- 银河航天官网（多种尝试）---
+    - id: "galaxyspace-official-en"
+      name: "银河航天官网-英文"
+      url: "https://www.yinhehangtian.cn/en/news/rss"
+      max_age_days: 90
+
+    - id: "galaxyspace-official-cn"
+      name: "银河航天官网-中文"
+      url: "https://www.yinhehangtian.cn/news/rss"
+      max_age_days: 90
+
+    - id: "galaxyspace-rsshub"
+      name: "银河航天官网（RSSHub代理）"
+      url: "https://rsshub123test.vercel.app/custom/yinhehangtian.cn/news"
+      fallback_url: "https://rsshub.app/custom/yinhehangtian.cn/news"
+      max_age_days: 90
+
+    # ============================================================
+    # 🚀 航天专业媒体（国内+国际+小众）
+    # ============================================================
+    
+    # --- 国内官方源 ---
+    - id: "space-china"
+      name: "中国航天新闻"
+      url: "https://rsshub123test.vercel.app/cnspacelab"
+      fallback_url: "https://rsshub.app/cnspacelab"
+      max_age_days: 180
+
+    - id: "cnsa"
+      name: "国家航天局"
+      url: "https://rsshub123test.vercel.app/gov/cnsa"
+      fallback_url: "https://rsshub.app/gov/cnsa"
+      max_age_days: 180
+
+    - id: "casc"
+      name: "中国航天科技集团"
+      url: "https://rsshub123test.vercel.app/casc/news"
+      fallback_url: "https://rsshub.app/casc/news"
+      max_age_days: 180
+
+    - id: "casic"
+      name: "中国航天科工集团"
+      url: "https://rsshub123test.vercel.app/casic/news"
+      fallback_url: "https://rsshub.app/casic/news"
+      max_age_days: 180
+
+    - id: "cgtn-space"
+      name: "CGTN空间新闻"
+      url: "https://news.cgtn.com/rss/Space.xml"
+      max_age_days: 90
+
+    - id: "c114"
+      name: "C114通信网"
+      url: "https://rsshub123test.vercel.app/c114/roll"
+      fallback_url: "https://rsshub.app/c114/roll"
+      max_age_days: 90
+
+    - id: "cas"
+      name: "中科院之声"
+      url: "https://rsshub123test.vercel.app/cas/weibo"
+      fallback_url: "https://rsshub.app/cas/weibo"
+      max_age_days: 90
+
+    - id: "miit"
+      name: "工信部-通信"
+      url: "https://rsshub123test.vercel.app/gov/miit"
+      fallback_url: "https://rsshub.app/gov/miit"
+      max_age_days: 180
+
+    - id: "sastind"
+      name: "国防科工局"
+      url: "https://rsshub123test.vercel.app/gov/sastind"
+      fallback_url: "https://rsshub.app/gov/sastind"
+      max_age_days: 180
+
+    # --- 国际主流航天源 ---
+    - id: "spacenews"
+      name: "Space News"
+      url: "https://spacenews.com/feed/"
+      max_age_days: 180
+
+    - id: "space-com"
+      name: "Space.com"
+      url: "https://www.space.com/feeds/all"
+      max_age_days: 180
+
+    - id: "spacedaily"
+      name: "Space Daily"
+      url: "https://www.spacedaily.com/spacedaily.xml"
+      max_age_days: 180
+
+    - id: "nasa"
+      name: "NASA News"
+      url: "https://www.nasa.gov/rss/dyn/breaking_news.rss"
+      max_age_days: 180
+
+    - id: "esa"
+      name: "ESA（欧洲航天局）"
+      url: "https://www.esa.int/rssfeed/Our_Activities/Space_News"
+      max_age_days: 180
+
+    - id: "spaceflightnow"
+      name: "Spaceflight Now"
+      url: "https://spaceflightnow.com/feed/"
+      max_age_days: 180
+
+    - id: "nasaspaceflight"
+      name: "NASASpaceflight.com"
+      url: "https://www.nasaspaceflight.com/feed/"
+      max_age_days: 180
+
+    - id: "satellitetoday"
+      name: "Satellite Today"
+      url: "https://www.satellitetoday.com/feed/"
+      max_age_days: 180
+
+    - id: "via-satellite"
+      name: "Via Satellite"
+      url: "https://www.satellitetoday.com/via-satellite/feed/"
+      max_age_days: 180
+
+    # --- 小众/区域性航天源 ---
+    - id: "phys-org-space"
+      name: "Phys.org空间"
+      url: "https://phys.org/rss-feed/space-astronomy/"
+      max_age_days: 90
+
+    - id: "scmp-tech"
+      name: "SCMP科技（香港视角）"
+      url: "https://www.scmp.com/rss/91/feed"
+      max_age_days: 30
+
+    - id: "aspistrategist"
+      name: "ASPI Strategist（澳洲智库）"
+      url: "https://www.aspistrategist.org.au/feed/"
+      max_age_days: 90
+
+    - id: "defensenews-space"
+      name: "Defense News Space"
+      url: "https://www.defensenews.com/arc/outboundfeeds/rss/category/space/?outputType=xml"
+      max_age_days: 90
+
+    - id: "aviationweek"
+      name: "Aviation Week Space"
+      url: "https://aviationweek.com/rss/space.xml"
+      max_age_days: 90
+
+    # --- 亚太航天源 ---
+    - id: "jaxa"
+      name: "JAXA（日本宇宙航空研究开发机构）"
+      url: "https://global.jaxa.jp/rss/press_e.rdf"
+      max_age_days: 180
+
+    - id: "isro"
+      name: "ISRO（印度空间研究组织）"
+      url: "https://www.isro.gov.in/rss.xml"
+      max_age_days: 180
+
+    # ============================================================
+    # 💬 社交平台搜索（扩展版）
+    # ============================================================
+    
+    # --- 微博（多关键词）---
+    - id: "weibo-keyword-galaxy"
+      name: "微博搜索-银河航天"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/银河航天"
+      fallback_url: "https://rsshub.app/weibo/keyword/银河航天"
+      max_age_days: 90
+
+    - id: "weibo-keyword-satellite"
+      name: "微博搜索-卫星互联网"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/卫星互联网"
+      fallback_url: "https://rsshub.app/weibo/keyword/卫星互联网"
+      max_age_days: 90
+
+    - id: "weibo-keyword-starlink"
+      name: "微博搜索-星链"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/星链"
+      fallback_url: "https://rsshub.app/weibo/keyword/星链"
+      max_age_days: 90
+
+    - id: "weibo-keyword-lowearth"
+      name: "微博搜索-低轨卫星"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/低轨卫星"
+      fallback_url: "https://rsshub.app/weibo/keyword/低轨卫星"
+      max_age_days: 90
+
+    - id: "weibo-hot"
+      name: "微博热搜"
+      url: "https://rsshub123test.vercel.app/weibo/search/hot"
+      fallback_url: "https://rsshub.app/weibo/search/hot"
+      max_age_days: 7
+
+    # --- 知乎（多关键词）---
+    - id: "zhihu-search-galaxy"
+      name: "知乎搜索-银河航天"
+      url: "https://rsshub123test.vercel.app/zhihu/search/银河航天"
+      fallback_url: "https://rsshub.app/zhihu/search/银河航天"
+      max_age_days: 90
+
+    - id: "zhihu-search-satellite"
+      name: "知乎搜索-卫星互联网"
+      url: "https://rsshub123test.vercel.app/zhihu/search/卫星互联网"
+      fallback_url: "https://rsshub.app/zhihu/search/卫星互联网"
+      max_age_days: 90
+
+    - id: "zhihu-search-starlink"
+      name: "知乎搜索-星链"
+      url: "https://rsshub123test.vercel.app/zhihu/search/星链"
+      fallback_url: "https://rsshub.app/zhihu/search/星链"
+      max_age_days: 90
+
+    - id: "zhihu-search-aerospace"
+      name: "知乎搜索-商业航天"
+      url: "https://rsshub123test.vercel.app/zhihu/search/商业航天"
+      fallback_url: "https://rsshub.app/zhihu/search/商业航天"
+      max_age_days: 90
+
+    - id: "zhihu-hotlist"
+      name: "知乎热榜"
+      url: "https://rsshub123test.vercel.app/zhihu/hotlist"
+      fallback_url: "https://rsshub.app/zhihu/hotlist"
+      max_age_days: 7
+
+    # --- B站（多关键词）---
+    - id: "bilibili-search-galaxy"
+      name: "B站搜索-银河航天"
+      url: "https://rsshub123test.vercel.app/bilibili/search/银河航天"
+      fallback_url: "https://rsshub.app/bilibili/search/银河航天"
+      max_age_days: 90
+
+    - id: "bilibili-search-satellite"
+      name: "B站搜索-卫星互联网"
+      url: "https://rsshub123test.vercel.app/bilibili/search/卫星互联网"
+      fallback_url: "https://rsshub.app/bilibili/search/卫星互联网"
+      max_age_days: 90
+
+    - id: "bilibili-search-starlink"
+      name: "B站搜索-星链"
+      url: "https://rsshub123test.vercel.app/bilibili/search/星链"
+      fallback_url: "https://rsshub.app/bilibili/search/星链"
+      max_age_days: 90
+
+    - id: "bilibili-search-aerospace"
+      name: "B站搜索-商业航天"
+      url: "https://rsshub123test.vercel.app/bilibili/search/商业航天"
+      fallback_url: "https://rsshub.app/bilibili/search/商业航天"
+      max_age_days: 90
+
+    - id: "bilibili-hot"
+      name: "B站热搜"
+      url: "https://rsshub123test.vercel.app/bilibili/hot-search"
+      fallback_url: "https://rsshub.app/bilibili/hot-search"
+      max_age_days: 7
+
+    # --- 今日头条（多关键词）---
+    - id: "toutiao-keyword-galaxy"
+      name: "今日头条-银河航天"
+      url: "https://rsshub123test.vercel.app/toutiao/keyword/银河航天"
+      fallback_url: "https://rsshub.app/toutiao/keyword/银河航天"
+      max_age_days: 90
+
+    - id: "toutiao-keyword-satellite"
+      name: "今日头条-卫星互联网"
+      url: "https://rsshub123test.vercel.app/toutiao/keyword/卫星互联网"
+      fallback_url: "https://rsshub.app/toutiao/keyword/卫星互联网"
+      max_age_days: 90
+
+    - id: "toutiao-keyword-starlink"
+      name: "今日头条-星链"
+      url: "https://rsshub123test.vercel.app/toutiao/keyword/星链"
+      fallback_url: "https://rsshub.app/toutiao/keyword/星链"
+      max_age_days: 90
+
+    # --- 百度贴吧 ---
+    - id: "tieba-space"
+      name: "百度贴吧-航天吧"
+      url: "https://rsshub123test.vercel.app/tieba/forum/航天"
+      fallback_url: "https://rsshub.app/tieba/forum/航天"
+      max_age_days: 90
+
+    - id: "tieba-satellite"
+      name: "百度贴吧-卫星吧"
+      url: "https://rsshub123test.vercel.app/tieba/forum/卫星"
+      fallback_url: "https://rsshub.app/tieba/forum/卫星"
+      max_age_days: 90
+
+    - id: "tieba-starlink"
+      name: "百度贴吧-星链吧"
+      url: "https://rsshub123test.vercel.app/tieba/forum/星链"
+      fallback_url: "https://rsshub.app/tieba/forum/星链"
+      max_age_days: 90
+
+    # --- 小红书 ---
+    - id: "xiaohongshu-galaxy"
+      name: "小红书-银河航天"
+      url: "https://rsshub123test.vercel.app/xiaohongshu/search/银河航天"
+      fallback_url: "https://rsshub.app/xiaohongshu/search/银河航天"
+      max_age_days: 90
+
+    - id: "xiaohongshu-satellite"
+      name: "小红书-卫星互联网"
+      url: "https://rsshub123test.vercel.app/xiaohongshu/search/卫星互联网"
+      fallback_url: "https://rsshub.app/xiaohongshu/search/卫星互联网"
+      max_age_days: 90
+
+    # --- 抖音 ---
+    - id: "douyin-galaxy"
+      name: "抖音搜索-银河航天"
+      url: "https://rsshub123test.vercel.app/douyin/search/银河航天"
+      fallback_url: "https://rsshub.app/douyin/search/银河航天"
+      max_age_days: 90
+
+    - id: "douyin-satellite"
+      name: "抖音搜索-卫星互联网"
+      url: "https://rsshub123test.vercel.app/douyin/search/卫星互联网"
+      fallback_url: "https://rsshub.app/douyin/search/卫星互联网"
+      max_age_days: 90
+
+    # ============================================================
+    # 📱 微信公众号（扩展版）
+    # ============================================================
+    - id: "weixin-xinhuanet"
+      name: "微信-新华网"
+      url: "https://rsshub123test.vercel.app/weixin/mp/xinhuanet"
+      fallback_url: "https://rsshub.app/weixin/mp/xinhuanet"
+      max_age_days: 90
+
+    - id: "weixin-cctvnews"
+      name: "微信-央视新闻"
+      url: "https://rsshub123test.vercel.app/weixin/mp/cctvnews"
+      fallback_url: "https://rsshub.app/weixin/mp/cctvnews"
+      max_age_days: 90
+
+    - id: "weixin-36kr"
+      name: "微信-36氪"
+      url: "https://rsshub123test.vercel.app/weixin/mp/36kr"
+      fallback_url: "https://rsshub.app/weixin/mp/36kr"
+      max_age_days: 90
+
+    - id: "weixin-huxiu"
+      name: "微信-虎嗅网"
+      url: "https://rsshub123test.vercel.app/weixin/mp/huxiu"
+      fallback_url: "https://rsshub.app/weixin/mp/huxiu"
+      max_age_days: 90
+
+    - id: "weixin-caijing"
+      name: "微信-财经杂志"
+      url: "https://rsshub123test.vercel.app/weixin/mp/caijing"
+      fallback_url: "https://rsshub.app/weixin/mp/caijing"
+      max_age_days: 90
+
+    - id: "weixin-cas"
+      name: "微信-中科院之声"
+      url: "https://rsshub123test.vercel.app/weixin/mp/cas"
+      fallback_url: "https://rsshub.app/weixin/mp/cas"
+      max_age_days: 90
+
+    # ============================================================
+    # 🇨🇳 中国大陆核心媒体（保留原配置）
     # ============================================================
     
     # --- 央媒/官方 ---
     - id: "xinhuanet-news"
       name: "新华网新闻"
       url: "https://rsshub123test.vercel.app/xinhuanet/news"
-      fallback_url: "https://rsshub.app/xinhuanet/news"  # 🔄 备用
+      fallback_url: "https://rsshub.app/xinhuanet/news"
       max_age_days: 90
       
     - id: "people-rmrb"
@@ -126,7 +581,7 @@ rss:
     - id: "thepaper-featured"
       name: "澎湃新闻精选"
       url: "https://rsshub123test.vercel.app/thepaper/featured"
-      fallback_url: "https://feedx.net/rss/thepaper.xml"  # 第三方聚合
+      fallback_url: "https://feedx.net/rss/thepaper.xml"
       max_age_days: 30
       
     - id: "guangming-daily"
@@ -209,12 +664,17 @@ rss:
       fallback_url: "https://rsshub.app/sina/finance/china"
       max_age_days: 30
 
+    - id: "eastmoney-news"
+      name: "东方财富网"
+      url: "http://rss.eastmoney.com/news.xml"
+      max_age_days: 30
+
     # ============================================================
-    # 🌐 国际中文媒体（综合/财经/科技）
+    # 🌐 国际中文媒体
     # ============================================================
     - id: "ftchinese"
       name: "FT中文网"
-      url: "https://feedx.net/rss/ft.xml"  # 原生有效
+      url: "https://feedx.net/rss/ft.xml"
       max_age_days: 30
       
     - id: "nikkei-cn"
@@ -254,169 +714,7 @@ rss:
       max_age_days: 30
 
     # ============================================================
-    # 🚀 航天专业媒体（国内+国际）
-    # ============================================================
-    - id: "space-china"
-      name: "中国航天新闻"
-      url: "https://rsshub123test.vercel.app/cnspacelab"
-      fallback_url: "https://rsshub.app/cnspacelab"
-      max_age_days: 180  # 航天新闻更新慢，保留半年
-      
-    - id: "c114"
-      name: "C114通信网"
-      url: "https://rsshub123test.vercel.app/c114/roll"
-      fallback_url: "https://rsshub.app/c114/roll"
-      max_age_days: 90
-      
-    - id: "spacenews"
-      name: "Space News"
-      url: "https://spacenews.com/feed/"  # 原生RSS
-      max_age_days: 180
-      
-    - id: "space-com"
-      name: "Space.com"
-      url: "https://www.space.com/feeds/all"
-      max_age_days: 180
-      
-    - id: "nasa"
-      name: "NASA News"
-      url: "https://www.nasa.gov/rss/dyn/breaking_news.rss"
-      max_age_days: 180
-      
-    - id: "cnsa"
-      name: "国家航天局"
-      url: "https://rsshub123test.vercel.app/gov/cnsa"
-      fallback_url: "https://rsshub.app/gov/cnsa"
-      max_age_days: 180
-      
-    - id: "cas"
-      name: "中科院之声"
-      url: "https://rsshub123test.vercel.app/cas/weibo"
-      fallback_url: "https://rsshub.app/cas/weibo"
-      max_age_days: 90
-      
-    - id: "miit"
-      name: "工信部-通信"
-      url: "https://rsshub123test.vercel.app/gov/miit"
-      fallback_url: "https://rsshub.app/gov/miit"
-      max_age_days: 180
-
-    # ============================================================
-    # 💬 社交平台搜索（微博/知乎/B站/今日头条）
-    # ============================================================
-    
-    # --- 微博 ---
-    - id: "weibo-keyword-galaxy"
-      name: "微博搜索-银河航天"
-      url: "https://rsshub123test.vercel.app/weibo/keyword/银河航天"
-      fallback_url: "https://rsshub.app/weibo/keyword/银河航天"
-      max_age_days: 90
-      
-    - id: "weibo-keyword-satellite"
-      name: "微博搜索-卫星互联网"
-      url: "https://rsshub123test.vercel.app/weibo/keyword/卫星互联网"
-      fallback_url: "https://rsshub.app/weibo/keyword/卫星互联网"
-      max_age_days: 90
-      
-    - id: "weibo-hot"
-      name: "微博热搜"
-      url: "https://rsshub123test.vercel.app/weibo/search/hot"
-      fallback_url: "https://rsshub.app/weibo/search/hot"
-      max_age_days: 7
-
-    # --- 知乎 ---
-    - id: "zhihu-search-galaxy"
-      name: "知乎搜索-银河航天"
-      url: "https://rsshub123test.vercel.app/zhihu/search/银河航天"
-      fallback_url: "https://rsshub.app/zhihu/search/银河航天"
-      max_age_days: 90
-      
-    - id: "zhihu-search-satellite"
-      name: "知乎搜索-卫星互联网"
-      url: "https://rsshub123test.vercel.app/zhihu/search/卫星互联网"
-      fallback_url: "https://rsshub.app/zhihu/search/卫星互联网"
-      max_age_days: 90
-      
-    - id: "zhihu-hotlist"
-      name: "知乎热榜"
-      url: "https://rsshub123test.vercel.app/zhihu/hotlist"
-      fallback_url: "https://rsshub.app/zhihu/hotlist"
-      max_age_days: 7
-
-    # --- B站 ---
-    - id: "bilibili-search-galaxy"
-      name: "B站搜索-银河航天"
-      url: "https://rsshub123test.vercel.app/bilibili/search/银河航天"
-      fallback_url: "https://rsshub.app/bilibili/search/银河航天"
-      max_age_days: 90
-      
-    - id: "bilibili-search-satellite"
-      name: "B站搜索-卫星互联网"
-      url: "https://rsshub123test.vercel.app/bilibili/search/卫星互联网"
-      fallback_url: "https://rsshub.app/bilibili/search/卫星互联网"
-      max_age_days: 90
-      
-    - id: "bilibili-hot"
-      name: "B站热搜"
-      url: "https://rsshub123test.vercel.app/bilibili/hot-search"
-      fallback_url: "https://rsshub.app/bilibili/hot-search"
-      max_age_days: 7
-
-    # --- 今日头条 ---
-    - id: "toutiao-keyword-galaxy"
-      name: "今日头条-银河航天"
-      url: "https://rsshub123test.vercel.app/toutiao/keyword/银河航天"
-      fallback_url: "https://rsshub.app/toutiao/keyword/银河航天"
-      max_age_days: 90
-      
-    - id: "toutiao-keyword-satellite"
-      name: "今日头条-卫星互联网"
-      url: "https://rsshub123test.vercel.app/toutiao/keyword/卫星互联网"
-      fallback_url: "https://rsshub.app/toutiao/keyword/卫星互联网"
-      max_age_days: 90
-
-    # --- 百度贴吧 ---
-    - id: "tieba-space"
-      name: "百度贴吧-航天吧"
-      url: "https://rsshub123test.vercel.app/tieba/forum/航天"
-      fallback_url: "https://rsshub.app/tieba/forum/航天"
-      max_age_days: 90
-      
-    - id: "tieba-satellite"
-      name: "百度贴吧-卫星吧"
-      url: "https://rsshub123test.vercel.app/tieba/forum/卫星"
-      fallback_url: "https://rsshub.app/tieba/forum/卫星"
-      max_age_days: 90
-
-    # ============================================================
-    # 📱 微信公众号（主流官方账号）
-    # ============================================================
-    - id: "weixin-xinhuanet"
-      name: "微信-新华网"
-      url: "https://rsshub123test.vercel.app/weixin/mp/xinhuanet"
-      fallback_url: "https://rsshub.app/weixin/mp/xinhuanet"
-      max_age_days: 90
-      
-    - id: "weixin-cctvnews"
-      name: "微信-央视新闻"
-      url: "https://rsshub123test.vercel.app/weixin/mp/cctvnews"
-      fallback_url: "https://rsshub.app/weixin/mp/cctvnews"
-      max_age_days: 90
-      
-    - id: "weixin-36kr"
-      name: "微信-36氪"
-      url: "https://rsshub123test.vercel.app/weixin/mp/36kr"
-      fallback_url: "https://rsshub.app/weixin/mp/36kr"
-      max_age_days: 90
-      
-    - id: "weixin-huxiu"
-      name: "微信-虎嗅网"
-      url: "https://rsshub123test.vercel.app/weixin/mp/huxiu"
-      fallback_url: "https://rsshub.app/weixin/mp/huxiu"
-      max_age_days: 90
-
-    # ============================================================
-    # 🌍 国际英文媒体（财经+科技）
+    # 🌍 国际英文媒体
     # ============================================================
     
     # --- 财经 ---
@@ -472,7 +770,7 @@ rss:
       max_age_days: 30
 
     # ============================================================
-    # 🤝 技术社区（Hacker News/V2EX/Reddit）
+    # 🤝 技术社区
     # ============================================================
     - id: "hacker-news"
       name: "Hacker News"
@@ -497,6 +795,17 @@ rss:
       fallback_url: "https://rsshub.app/reddit/r/spacex"
       max_age_days: 30
 
+    - id: "reddit-satellites"
+      name: "Reddit-Satellites"
+      url: "https://rsshub123test.vercel.app/reddit/r/satellites"
+      fallback_url: "https://rsshub.app/reddit/r/satellites"
+      max_age_days: 30
+
+    - id: "reddit-starlink"
+      name: "Reddit-Starlink"
+      url: "https://rsshub123test.vercel.app/reddit/r/starlink"
+      fallback_url: "https://rsshub.app/reddit/r/starlink"
+      max_age_days: 30
 # ===============================================================
 # 4. 报告模式
 #
