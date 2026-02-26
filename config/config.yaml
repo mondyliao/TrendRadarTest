@@ -79,7 +79,6 @@ platforms:
       name: "知乎"
 
 
-
 # ===============================================================
 # 3. 数据源 - RSS 订阅
 #
@@ -87,6 +86,8 @@ platforms:
 # 每个源配置：id(唯一标识)、name(显示名称)、url(订阅地址)
 # enabled: 可选，默认 true
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
+#
+# ⚠️ 使用你的 Vercel RSSHub 实例: https://rsshub123test.vercel.app
 # ===============================================================
 rss:
   enabled: true
@@ -96,115 +97,304 @@ rss:
     max_age_days: 7
 
   feeds:
-    # ============ 科技新闻 ============
+    # ============================================================
+    # 核心科技媒体（中文）
+    # ============================================================
     - id: "36kr"
       name: "36氪快讯"
-      url: "https://rsshub.app/36kr/newsflashes"
+      url: "https://rsshub123test.vercel.app/36kr/newsflashes"
+      max_age_days: 3
       
     - id: "ifanr"
       name: "爱范儿"
       url: "https://www.ifanr.com/feed"
+      max_age_days: 7
       
     - id: "geekpark"
       name: "极客公园快讯"
-      url: "https://rsshub.app/geekpark/breakingnews"
+      url: "https://rsshub123test.vercel.app/geekpark/breakingnews"
+      max_age_days: 3
     
-    # ============ 财经新闻 ============
+    - id: "huxiu"
+      name: "虎嗅资讯"
+      url: "https://rsshub123test.vercel.app/huxiu/article"
+      max_age_days: 7
+      
+    - id: "tmtpost"
+      name: "钛媒体"
+      url: "https://rsshub123test.vercel.app/tmtpost/tm"
+      max_age_days: 7
+      
+    - id: "ithome"
+      name: "IT之家"
+      url: "https://rsshub123test.vercel.app/ithome/it"
+      max_age_days: 3
+    
+    # ============================================================
+    # 财经媒体
+    # ============================================================
     - id: "cls"
       name: "财联社电报"
-      url: "https://rsshub.app/cls/telegraph"
+      url: "https://rsshub123test.vercel.app/cls/telegraph"
+      max_age_days: 1
       
     - id: "wallstreet"
       name: "华尔街见闻"
-      url: "https://rsshub.app/wallstreetcn/news/global"
+      url: "https://rsshub123test.vercel.app/wallstreetcn/news/global"
+      max_age_days: 3
       
     - id: "xueqiu-hot"
       name: "雪球热帖"
-      url: "https://rsshub.app/xueqiu/hots"
+      url: "https://rsshub123test.vercel.app/xueqiu/hots"
+      max_age_days: 1
     
     - id: "10jqka"
       name: "同花顺7×24小时"
-      url: "https://rsshub.app/10jqka/realtimenews"
+      url: "https://rsshub123test.vercel.app/10jqka/realtimenews"
+      max_age_days: 1
     
     - id: "sina-finance"
       name: "新浪财经国内"
-      url: "https://rsshub.app/sina/finance/china"
+      url: "https://rsshub123test.vercel.app/sina/finance/china"
+      max_age_days: 3
+      
+    - id: "stcn"
+      name: "证券时报"
+      url: "https://rsshub123test.vercel.app/stcn/news"
+      max_age_days: 7
+      
+    - id: "yicai"
+      name: "第一财经"
+      url: "https://rsshub123test.vercel.app/yicai/brief"
+      max_age_days: 7
     
-    # ============ 航天/科学相关 ============
+    # ============================================================
+    # 航天专业媒体
+    # ============================================================
     - id: "space-china"
       name: "中国航天新闻"
-      url: "https://rsshub.app/cnspacelab"
+      url: "https://rsshub123test.vercel.app/cnspacelab"
       max_age_days: 30
       
     - id: "c114"
       name: "C114通信网"
-      url: "https://rsshub.app/c114/roll"
+      url: "https://rsshub123test.vercel.app/c114/roll"
+      max_age_days: 7
+      
+    - id: "spacenews"
+      name: "Space News"
+      url: "https://spacenews.com/feed/"
+      max_age_days: 7
+      
+    - id: "space-com"
+      name: "Space.com"
+      url: "https://www.space.com/feeds/all"
+      max_age_days: 7
+      
+    - id: "nasa"
+      name: "NASA News"
+      url: "https://www.nasa.gov/rss/dyn/breaking_news.rss"
+      max_age_days: 7
     
-    # ============ 社交媒体关键词搜索 ============
-    
-    # Twitter 关键词搜索（需要配置 TWITTER_AUTH_TOKEN）
-    - id: "twitter-galaxy-space"
-      name: "Twitter-银河航天"
-      url: "https://rsshub.app/twitter/keyword/银河航天"
+    # ============================================================
+    # 知乎（专业讨论）
+    # ============================================================
+    - id: "zhihu-search-galaxy"
+      name: "知乎搜索-银河航天"
+      url: "https://rsshub123test.vercel.app/zhihu/search/银河航天"
       max_age_days: 3
       
-    - id: "twitter-galaxy-space-en"
-      name: "Twitter-GalaxySpace"
-      url: "https://rsshub.app/twitter/keyword/GalaxySpace"
+    - id: "zhihu-search-satellite"
+      name: "知乎搜索-卫星互联网"
+      url: "https://rsshub123test.vercel.app/zhihu/search/卫星互联网"
       max_age_days: 3
+      
+    - id: "zhihu-hot"
+      name: "知乎热榜"
+      url: "https://rsshub123test.vercel.app/zhihu/hotlist"
+      max_age_days: 1
     
-    - id: "twitter-satellite"
-      name: "Twitter-卫星互联网"
-      url: "https://rsshub.app/twitter/keyword/卫星互联网"
-      max_age_days: 3
+    # ============================================================
+    # B站（视频内容）
+    # ============================================================
+    - id: "bilibili-space-search"
+      name: "B站-银河航天搜索"
+      url: "https://rsshub123test.vercel.app/bilibili/search/银河航天"
+      max_age_days: 7
+      
+    - id: "bilibili-satellite-search"
+      name: "B站-卫星互联网搜索"
+      url: "https://rsshub123test.vercel.app/bilibili/search/卫星互联网"
+      max_age_days: 7
+      
+    - id: "bilibili-tech-weekly"
+      name: "B站-科技区周刊"
+      url: "https://rsshub123test.vercel.app/bilibili/ranking/0/223/0/3"
+      max_age_days: 7
     
-    - id: "twitter-satellite-en"
-      name: "Twitter-satellite internet"
-      url: "https://rsshub.app/twitter/keyword/satellite internet"
-      max_age_days: 3
-    
-    # 微博关键词搜索（需要配置 WEIBO_COOKIES）
+    # ============================================================
+    # 微博搜索（需要配置 WEIBO_COOKIES）
+    # ============================================================
     - id: "weibo-galaxy-space"
       name: "微博-银河航天"
-      url: "https://rsshub.app/weibo/keyword/银河航天"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/银河航天"
       max_age_days: 3
       
     - id: "weibo-satellite"
       name: "微博-卫星互联网"
-      url: "https://rsshub.app/weibo/keyword/卫星互联网"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/卫星互联网"
       max_age_days: 3
-    
+      
     - id: "weibo-leo-satellite"
       name: "微博-低轨卫星"
-      url: "https://rsshub.app/weibo/keyword/低轨卫星"
+      url: "https://rsshub123test.vercel.app/weibo/keyword/低轨卫星"
       max_age_days: 3
     
-    # ============ 新闻媒体 ============
+    # ============================================================
+    # 今日头条搜索
+    # ============================================================
+    - id: "toutiao-galaxy"
+      name: "今日头条-银河航天"
+      url: "https://rsshub123test.vercel.app/toutiao/keyword/银河航天"
+      max_age_days: 3
+      
+    - id: "toutiao-satellite"
+      name: "今日头条-卫星互联网"
+      url: "https://rsshub123test.vercel.app/toutiao/keyword/卫星互联网"
+      max_age_days: 3
+    
+    # ============================================================
+    # 传统媒体
+    # ============================================================
     - id: "cctv-tech"
       name: "央视新闻-科技"
-      url: "https://rsshub.app/cctv/tech"
-    
+      url: "https://rsshub123test.vercel.app/cctv/tech"
+      max_age_days: 7
+      
+    - id: "thepaper-tech"
+      name: "澎湃新闻-科技"
+      url: "https://rsshub123test.vercel.app/thepaper/channel/27224"
+      max_age_days: 7
+      
     - id: "china-news"
       name: "中华网-时事新闻"
-      url: "https://rsshub.app/china/news"
+      url: "https://rsshub123test.vercel.app/china/news"
+      max_age_days: 7
+      
+    - id: "sohu-tech"
+      name: "搜狐科技"
+      url: "https://rsshub123test.vercel.app/sohu/tech"
+      max_age_days: 7
+      
+    - id: "netease-tech"
+      name: "网易科技"
+      url: "https://rsshub123test.vercel.app/netease/tech"
+      max_age_days: 7
+      
+    - id: "qq-tech"
+      name: "腾讯科技"
+      url: "https://rsshub123test.vercel.app/qq/tech"
+      max_age_days: 7
     
+    # ============================================================
+    # 国际媒体
+    # ============================================================
     - id: "nytimes-cn"
       name: "纽约时报中文网"
-      url: "https://rsshub.app/nytimes/dual"
+      url: "https://rsshub123test.vercel.app/nytimes/dual"
       max_age_days: 3
     
     - id: "bloomberg"
       name: "Bloomberg科技"
-      url: "https://rsshub.app/bloomberg/technology"
+      url: "https://rsshub123test.vercel.app/bloomberg/technology"
+      max_age_days: 3
     
     - id: "reuters-tech"
       name: "路透社科技"
-      url: "https://rsshub.app/reuters/technology"
+      url: "https://rsshub123test.vercel.app/reuters/technology"
+      max_age_days: 3
     
+    # ============================================================
+    # 技术社区
+    # ============================================================
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
       max_age_days: 1
+      
+    - id: "v2ex-hot"
+      name: "V2EX热门"
+      url: "https://rsshub123test.vercel.app/v2ex/topics/hot"
+      max_age_days: 1
+      
+    - id: "reddit-space"
+      name: "Reddit-Space"
+      url: "https://rsshub123test.vercel.app/reddit/r/space"
+      max_age_days: 3
+      
+    - id: "reddit-spacex"
+      name: "Reddit-SpaceX"
+      url: "https://rsshub123test.vercel.app/reddit/r/spacex"
+      max_age_days: 3
+    
+    # ============================================================
+    # 政府官方
+    # ============================================================
+    - id: "cnsa"
+      name: "国家航天局"
+      url: "https://rsshub123test.vercel.app/gov/cnsa"
+      max_age_days: 30
+      
+    - id: "cas"
+      name: "中科院之声"
+      url: "https://rsshub123test.vercel.app/cas/weibo"
+      max_age_days: 14
+      
+    - id: "miit"
+      name: "工信部-通信"
+      url: "https://rsshub123test.vercel.app/gov/miit"
+      max_age_days: 30
+    
+    # ============================================================
+    # 社区讨论
+    # ============================================================
+    - id: "tieba-space"
+      name: "百度贴吧-航天吧"
+      url: "https://rsshub123test.vercel.app/tieba/forum/航天"
+      max_age_days: 7
+      
+    - id: "tieba-satellite"
+      name: "百度贴吧-卫星吧"
+      url: "https://rsshub123test.vercel.app/tieba/forum/卫星"
+      max_age_days: 7
+    
+    # ============================================================
+    # 国际科技媒体（原生 RSS）
+    # ============================================================
+    - id: "techcrunch"
+      name: "TechCrunch"
+      url: "https://techcrunch.com/feed/"
+      max_age_days: 3
+      
+    - id: "theverge"
+      name: "The Verge"
+      url: "https://www.theverge.com/rss/index.xml"
+      max_age_days: 3
+      
+    - id: "wired"
+      name: "Wired"
+      url: "https://www.wired.com/feed/rss"
+      max_age_days: 7
+      
+    - id: "arstechnica"
+      name: "Ars Technica"
+      url: "https://feeds.arstechnica.com/arstechnica/index"
+      max_age_days: 7
+      
+    - id: "engadget"
+      name: "Engadget"
+      url: "https://www.engadget.com/rss.xml"
+      max_age_days: 3
 
 
 # ===============================================================
@@ -228,7 +418,6 @@ rss:
 report:
   mode: "incremental"                 # 可选: daily | current | incremental
                                       # ⚠️ 开启调度系统后，此值会被当前时间段的 report_mode 覆盖
-
 
   display_mode: "keyword"             # 分组维度: keyword | platform
                                       # keyword: 按关键词分组显示（默认）
@@ -439,7 +628,6 @@ ai:
                                     #    例如: openai/deepseek-ai/DeepSeek-V3
                                     #    (原理：前缀 openai/ 强制 LiteLLM 使用 OpenAI 协议格式进行通信)
 
-
   timeout: 120                      # 请求超时（秒）
 
   temperature: 1.0                  # 采样温度 (0.0-2.0)
@@ -522,8 +710,6 @@ ai_analysis:
                                     # false: 使用简化格式（排名范围+时间范围+出现次数）
                                     # true: 传递完整排名变化轨迹（如 1(09:30)→2(10:00)→0(11:00)）
                                     # 启用后 AI 能更精确分析热度趋势，但会额外增加 token 消耗（0.5 倍到 1 倍）
-
-
 
 
 # ===============================================================
